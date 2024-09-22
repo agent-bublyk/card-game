@@ -31,7 +31,6 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: 'Arial', sans-serif;
     background-color: #380103; /* Dark red background for the page */
     font-family: 'jaro';
 }
@@ -40,6 +39,11 @@ body, html {
 .login_wrapper {
     display: flex;
     height: 100vh;
+    justify-content: space-between;
+    /* Prevent column layout for mobile devices */
+    flex-direction: row;
+    /* Ensure no scrollbars */
+    overflow: hidden;
 }
 
 /* Left-side: form section */
@@ -50,8 +54,18 @@ body, html {
     justify-content: center;
     align-items: center;
     padding: 50px;
-    background-color: #380103; /* Slightly lighter red for contrast */
-    color: #E4E4E4; /* Light text color */
+    background-color: #380103;
+    color: #E4E4E4;
+}
+
+.reset_password_actions_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Crimson Pro';
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 20px;
 }
 
 .login_welcome_to {
@@ -70,7 +84,7 @@ body, html {
     text-transform: uppercase;
 }
 
-.login_text {
+.signup_text, .login_text {
     font-size: 20px;
     margin: 15px 0;
     font-family: 'Crimson Pro';
@@ -80,22 +94,23 @@ body, html {
 .login_form {
     width: 100%;
     max-width: 582px;
+    display: flex;
+    flex-direction: column;
 }
 
+
 .input_wrapper {
+    margin-top: 16px;
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
-    background-color: #5B0000; /* Darker background for input fields */
+    background-color: #5B0000;
     padding: 20px;
     border-radius: 22px;
     color: #FFA0A0;
     font-size: 20px;
     font-family: 'Crimson Pro';
-    font-weight: 400;
 }
 
-/* Change placeholder color and size for various browsers */
 input::placeholder {
     color: #FFA0A0;
     font-size: 20px;
@@ -133,27 +148,21 @@ input::-webkit-input-placeholder { /* WebKit browsers (Chrome, Safari) */
     outline: none;
     color: #f0d7d7;
     font-size: 16px;
-    font-family: 'Crimson Pro'; /* Apply Crimson Pro font to input text */
-}
-
-.submit_wrapper {
-    text-align: center;
-    margin: 20px 0;
 }
 
 button {
-    width: 100%;
-    padding: 16px 230px;
-    background-color: #C30005; /* Red for the button */
+    width: 582px;
+    padding: 16px 100px; /* Reduce padding to allow text to fit in one line */
+    background-color: #C30005;
     border: none;
     border-radius: 15px;
     color: #FFA9A1;
     font-size: 32px;
     cursor: pointer;
-    text-transform: uppercase;
     transition: background-color 0.3s ease;
     font-family: 'Crimson Pro';
     font-weight: 600;
+    white-space: nowrap; 
 }
 
 button:hover {
@@ -161,20 +170,31 @@ button:hover {
 }
 
 /* Sign up link */
-.signup_wrapper {
+.submit_wrapper {
+    margin-top: 30px;
     text-align: center;
 }
 
-.signup_link {
+.signup_wrapper {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.signin_wrapper {
+    margin-top: 12px;
+    text-align: center;
+}
+
+.signup_link, .signin_link {
+    text-align: center;
     color: #FFB8BC;
     text-decoration: none;
-    font-weight: bold;
     transition: color 0.3s ease;
     font-weight: 600;
 }
 
-.signup_link:hover {
-    color: white;
+.signup_link:hover, .signin_link:hover {
+    color: #C30005;
 }
 
 /* Right-side: image section */
@@ -195,12 +215,21 @@ button:hover {
     opacity: 0.8; /* Slight transparency */
 }
 
+.login_actions_wrapper {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Crimson Pro';
+    font-size: 20px;
+    font-weight: 600;
+}
+
 /* Checkbox style */
 .checkbox_wrapper {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin: 16px 0;
     color: #FFA0A0; /* Same color as inputs */
+    /* font-size: 20px; */
 }
 
 .checkbox_wrapper input[type="checkbox"] {
@@ -214,18 +243,23 @@ button:hover {
 
 /* Forgot password link style */
 .forgot_password_wrapper {
-    text-align: right;
-    margin-top: -35px;
+    margin-top: 12px;
+    text-align: center;
 }
 
 .forgot_password_link {
     color: #FFB8BC;
     text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Crimson Pro';
 }
 
 .forgot_password_link:hover {
-    color: white;
+    color: #C30005;
 }
+
 
 /* Media Queries for smaller screens */
 @media (max-width: 768px) {
@@ -242,4 +276,22 @@ button:hover {
     .login_img_wrapper {
         display: none; /* Hide image on smaller screens */
     }
+}
+
+.error_message {
+    position: absolute; 
+    text-align: right;
+    color: #FF4C4C;
+    font-family: 'Crimson Pro';
+    font-size: 18px;
+    display: none;
+}
+
+.signup_error_message {
+    margin-top: 6px;
+    text-align: right;
+    color: #FF4C4C;
+    font-family: 'Crimson Pro';
+    font-size: 18px;
+    display: none;
 }
